@@ -7,6 +7,7 @@ console.log(numeroAleatorio);
 function exibirNomeNaTela(tag, texto){
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
+    responsiveVoice.speak(texto, "Brazilian Portuguese Female", {rate:1.2});
 }
 
 function exibirMensagemInicial(){
@@ -41,7 +42,7 @@ function verificarChute(){
         tentativa++;
         limparCampo();
     }
-    
+    responsiveVoice.speak(mensagemTentativas, "Brazilian Portuguese Female", {rate:1.2});
 }
 
 function gerarNumeroAleatorio(){

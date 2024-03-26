@@ -1,3 +1,5 @@
+let listaDeNumerosSorteados = [];
+let limiteDeNumeros = 10;
 let numeroAleatorio = gerarNumeroAleatorio();
 let tentativa = 1;
 console.log(numeroAleatorio);
@@ -29,6 +31,7 @@ function verificarChute(){
         exibirNomeNaTela("h1", "Você Venceu!");
         exibirNomeNaTela("p", mensagemTentativas);
         document.getElementById("reiniciar").removeAttribute("disabled");
+
     }else if (chute > numeroAleatorio){
         exibirNomeNaTela("p", "O número secreto é menor!");
         tentativa++;
@@ -42,7 +45,20 @@ function verificarChute(){
 }
 
 function gerarNumeroAleatorio(){
-    return parseInt(Math.random() * 10 + 1);
+    let numeroEscolohdo = parseInt(Math.random() * limiteDeNumeros + 1);
+    let quantidadeDeElementosNaLista = listaDeNumerosSorteados.length;
+
+    if(quantidadeDeElementosNaLista == limiteDeNumeros){
+        listaDeNumerosSorteados = [];
+    }
+
+    if (listaDeNumerosSorteados.includes(numeroEscolohdo)){
+        return gerarNumeroAleatorio();
+    }else{
+        listaDeNumerosSorteados.push(numeroEscolohdo);
+        console.log(listaDeNumerosSorteados);
+        return numeroEscolohdo;
+    }
 }
 
 function limparCampo(){
